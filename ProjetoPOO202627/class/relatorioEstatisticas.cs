@@ -1,4 +1,4 @@
-/*
+
 
 public class RelatorioEstatisticas
 {
@@ -8,7 +8,7 @@ public class RelatorioEstatisticas
     // --- Estatísticas ---
     public int ObterTotalReservas()
     {
-        return reservas.Count;
+        return ListaReservas.Count;
     }
 
   // Conta quantas reservas tem um espaço
@@ -16,7 +16,7 @@ public class RelatorioEstatisticas
     {
         int contador = 0;
 
-        foreach (Reserva r in reservas)
+        foreach (Reserva r in ListaReservas)
         {
             if (r.Espaco == espaco)
             {
@@ -32,7 +32,7 @@ public class RelatorioEstatisticas
     {
         List<Reserva> resultado = new List<Reserva>();
 
-        foreach (Reserva r in reservas)
+        foreach (Reserva r in ListaReservas)
         {
             if (r.HoraInicio >= horaInicio && r.HoraFim <= horaFim)
             {
@@ -44,12 +44,12 @@ public class RelatorioEstatisticas
     }
 
     // Devolve o espaço com mais reservas
-    public EspacoDesportivo ObterEspacoMaisUtilizado()
+    public EspacoDesportivo? ObterEspacoMaisUtilizado()
     {
-        EspacoDesportivo maisUtilizado = null;
+        EspacoDesportivo? maisUtilizado = null;
         int maiorContagem = -1;
 
-        foreach (EspacoDesportivo e in espacos)
+        foreach (EspacoDesportivo e in ListaEspacos)
         {
             int contagem = ObterReservasPorEspaco(e);
 
@@ -68,4 +68,3 @@ public class RelatorioEstatisticas
 
 
 }
-*/
