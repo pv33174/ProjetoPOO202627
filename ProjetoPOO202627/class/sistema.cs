@@ -14,7 +14,7 @@ public class Sistema
 
 
     // Procurar por email
-    public Utilizador ObterPorEmail(string email)
+    public Utilizador? ObterPorEmail(string email)
     {
         foreach (Utilizador u in Utilizadores)
         {
@@ -29,7 +29,7 @@ public class Sistema
 
 
     // Procurar por ID
-    public Utilizador ObterPorId(int id)
+    public Utilizador? ObterPorId(int id)
     {
         foreach (Utilizador u in Utilizadores)
         {
