@@ -25,28 +25,39 @@ public class Utilizador
         
 
         // ------ CRIAR CONTA ------
-        static void CriarConta()
+        static void CriarConta(Sistema nossoSistema)
         {
             string email = PedirEmail();
 
-            if (EmailExiste(email))
+            if (EmailExiste(nossoSistema, email))
             {
-                MostrarErro("Não pode criar conta com este email: já está associado a outra conta.");
+                Console.WriteLine("Não pode criar conta com este email: já está associado a outra conta.");
                 return;
             }
 
-            string palavraPasse = PedirPalavraPasse();
-            string nome = PedirNome();   // novo
 
-            Utilizador novo = new Utilizador
+            // Inicializa com valores padrão
+            Utilizador novo = new Utilizador(0, "", "", "")
             {
-                Id = AtribuirId(),
-                NomeUtilizador = nome,
+                Id = AtribuirId(nossoSistema),
+                NomeUtilizador = PedirNome(),
                 Email = email,
-                PalavraPasse = palavraPasse
+                PalavraPasse = PedirPalavraPasse()
             };
+            
+            nossoSistema.Utilizadores.Add(novo);
+        }
 
-            Utilizadores.Add(novo);
+        static bool EmailExiste(Sistema nossoSistema,string email)
+        {
+            foreach (Utilizador u in nossoSistema.Utilizadores)
+            {
+                if (u.Email == email)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         
@@ -75,11 +86,11 @@ public class Utilizador
         }
 
         // ------ Atribuir ID ------
-        static int AtribuirId()
+        static int AtribuirId(Sistema nossoSistema)
         {
             int maior = 0;
 
-            foreach (Utilizador u in Utilizadores)
+            foreach (Utilizador u in nossoSistema.Utilizadores)
             {
                 if (u.Id > maior)
                 {
