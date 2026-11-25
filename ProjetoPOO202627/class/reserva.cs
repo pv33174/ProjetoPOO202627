@@ -23,11 +23,7 @@ public class Reserva
         Estado = estado;
     }
 
-}
-
-/*
-
- //Metodos
+     //Metodos
     public void ConfirmarReserva()
     {
         Estado = "Confirmada";
@@ -43,7 +39,12 @@ public class Reserva
     {
         
     }
+}
 
 
-*/
+
+
+
+
+
   
