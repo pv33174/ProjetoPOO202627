@@ -5,21 +5,46 @@ public class Cliente : Utilizador
     {
     }
 
-    //Metodos Reservas
-    public void ConsultarMinhasReservas()
+    // Consultar reservas do cliente
+    public List<Reserva> ConsultarMinhasReservas(Sistema sistema)
     {
-            
+        return sistema.ObterReservasPorUtilizador(Id);
     }
-    public void CriarReserva()
+
+    // Criar uma nova reserva
+    public void CriarReserva(Sistema sistema, EspacoDesportivo espaco,
+                             DateTime dia, TimeSpan horaInicio,
+                             TimeSpan horaFim)
     {
-            
+        Reserva novaReserva = new Reserva(
+            sistema.AtribuirIdReserva(),
+            this,
+            espaco,
+            dia,
+            horaInicio,
+            horaFim,
+            "Pendente"
+        );
+
+        sistema.GuardarReserva(novaReserva);
     }
+
+    // Cancelar uma reserva
+    public void CancelarReserva(Sistema sistema, int idReserva)
+    {
+        foreach (Reserva r in sistema.Reservas)
+        {
+            if (r.Id == idReserva && r.Cliente.Id == Id)
+            {
+                r.CancelarReserva();
+                return;
+            }
+        }
+    }
+
+    // Alterar reserva
     public void AlterarReserva()
     {
-            
-    }
-    public void CancelarReserva()
-    {
-            
+
     }
 }

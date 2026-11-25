@@ -22,6 +22,8 @@ public class Utilizador
 
         
 
+        
+
         // ------ CRIAR CONTA ------
         static void CriarConta(Sistema nossoSistema)
         {
@@ -58,6 +60,7 @@ public class Utilizador
             return false;
         }
 
+        
         static string PedirEmail()
         {
             string email;
