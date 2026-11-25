@@ -22,7 +22,7 @@ public class Utilizador
 
         
 
-        /*
+        
 
         // ------ CRIAR CONTA ------
         static void CriarConta()
@@ -49,6 +49,7 @@ public class Utilizador
             Utilizadores.Add(novo);
         }
 
+        
         static string PedirEmail()
         {
             string email;
